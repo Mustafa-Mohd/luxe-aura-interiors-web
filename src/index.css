@@ -126,8 +126,47 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Magnetic Button Effect */
+.magnetic-button {
+  transition: var(--transition-magnetic);
+  transform-origin: center;
+}
+
+.magnetic-button:hover {
+  transform: scale(1.05);
+}
+
+.magnetic-button:active {
+  transform: scale(0.98);
+}
+
+/* Smooth Scroll for Safari */
+@supports (scroll-behavior: smooth) {
+  html {
     scroll-behavior: smooth;
   }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--navy));
+}
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
