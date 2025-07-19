@@ -155,12 +155,12 @@ const HorizontalScrollSection = () => {
           <div 
             ref={scrollerRef} 
             className="flex items-center h-full pl-8 pr-8"
-            style={{ width: `${categories.length * 100}vw` }}
+            style={{ width: `${categories.length * 80}vw` }}
           >
             {categories.map((category, index) => (
               <div
                 key={category.id}
-                className={`category-card flex-none w-[90vw] md:w-[70vw] lg:w-[50vw] h-[70vh] mx-8 relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br ${category.color} group cursor-pointer`}
+                className={`category-card flex-none w-[80vw] md:w-[60vw] lg:w-[40vw] h-[70vh] mx-6 relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br ${category.color} group cursor-pointer`}
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">

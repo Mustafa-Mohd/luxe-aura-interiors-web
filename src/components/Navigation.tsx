@@ -23,7 +23,6 @@ const Navigation = () => {
     { name: 'Services', path: '/services' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -33,7 +32,9 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="font-serif text-2xl lg:text-3xl font-bold text-navy">
+          <Link to="/" className={`font-serif text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
+            isScrolled ? 'text-navy' : 'text-white'
+          }`}>
             Luxuria
           </Link>
 
@@ -44,7 +45,7 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 className={`font-medium transition-all duration-300 hover:text-gold relative ${
-                  location.pathname === item.path ? 'text-gold' : 'text-navy'
+                  location.pathname === item.path ? 'text-gold' : isScrolled ? 'text-navy' : 'text-white'
                 }`}
               >
                 {item.name}
@@ -65,7 +66,9 @@ const Navigation = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-navy hover:text-gold transition-colors"
+              className={`lg:hidden p-2 transition-colors hover:text-gold ${
+                isScrolled ? 'text-navy' : 'text-white'
+              }`}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
