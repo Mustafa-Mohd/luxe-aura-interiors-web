@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Home, Palette, Layout, Lightbulb } from 'lucide-react';
+import { Home, Palette, Layout, Lightbulb, Wrench, Sofa } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,28 +13,28 @@ const ServicesSection = () => {
 
   const services = [
     {
-      icon: Home,
-      title: "Residential Design",
-      description: "Transform your home into a personal sanctuary with our comprehensive residential design services.",
-      features: ["Space Planning", "Custom Furniture", "Color Consultation"]
+      icon: Wrench,
+      title: "Aluminium Work",
+      description: "Expert aluminium fabrication and installation services for windows, doors, partitions, and custom structures.",
+      features: ["Windows & Doors", "Partitions", "Custom Fabrication"]
     },
     {
-      icon: Palette,
-      title: "Commercial Spaces",
-      description: "Create inspiring work environments that boost productivity and reflect your brand identity.",
-      features: ["Office Design", "Retail Spaces", "Hospitality"]
+      icon: Sofa,
+      title: "Furniture Contracting",
+      description: "Complete furniture solutions from design to installation, including custom and modular furniture.",
+      features: ["Custom Furniture", "Modular Solutions", "Installation"]
+    },
+    {
+      icon: Home,
+      title: "Interior Design",
+      description: "Transform your space into a personal sanctuary with our comprehensive interior design services.",
+      features: ["Space Planning", "Color Consultation", "Complete Interiors"]
     },
     {
       icon: Layout,
-      title: "Space Planning",
-      description: "Optimize your space with our expert planning services for maximum functionality and flow.",
-      features: ["Floor Plans", "3D Visualization", "Layout Optimization"]
-    },
-    {
-      icon: Lightbulb,
-      title: "Design Consultation",
-      description: "Get expert advice and guidance to bring your vision to life with our consultation services.",
-      features: ["Design Strategy", "Material Selection", "Project Management"]
+      title: "Complete Interior Solutions",
+      description: "End-to-end interior contracting services from planning to execution for residential and commercial spaces.",
+      features: ["Project Management", "3D Visualization", "Turnkey Solutions"]
     }
   ];
 
@@ -90,8 +90,8 @@ const ServicesSection = () => {
             Comprehensive Design Solutions
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            From concept to completion, we offer a full range of interior design services 
-            tailored to meet your unique needs and exceed your expectations.
+            From concept to completion, we offer comprehensive services including aluminium work, 
+            furniture contracting, and complete interior solutions tailored to meet your unique needs and exceed your expectations.
           </p>
         </div>
 

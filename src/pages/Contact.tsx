@@ -55,11 +55,11 @@ const Contact = () => {
                   <Phone className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-navy mb-2">Call Us</h3>
-                <a 
-                  href="tel:+919118861979" 
+                <a
+                  href="tel:+919912889119"
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
-                  +91 91188 61979
+                  +91 99128 89119
                 </a>
               </div>
 
@@ -69,13 +69,13 @@ const Contact = () => {
                   <MessageCircle className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-navy mb-2">WhatsApp</h3>
-                <a 
-                  href="https://wa.me/919118861979" 
+                <a
+                  href="https://wa.me/919912889119"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
-                  +91 91188 61979
+                  +91 99128 89119
                 </a>
               </div>
 
@@ -85,11 +85,11 @@ const Contact = () => {
                   <Mail className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-navy mb-2">Email Us</h3>
-                <a 
-                  href="mailto:info@luxuriainteriors.com" 
+                <a
+                  href="mailto:addsubedar@gmail.com"
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
-                  info@luxuriainteriors.com
+                  addsubedar@gmail.com
                 </a>
               </div>
 

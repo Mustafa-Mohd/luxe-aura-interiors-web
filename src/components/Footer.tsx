@@ -15,11 +15,11 @@ const Footer = () => {
   ];
 
   const services = [
-    'Residential Design',
-    'Commercial Spaces',
+    'Aluminium Work',
+    'Furniture Contracting',
+    'Interior Design',
     'Space Planning',
-    'Consultation',
-    'Project Management',
+    'Complete Interiors',
   ];
 
   return (
@@ -36,12 +36,12 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <Link to="/" className="font-serif text-3xl font-bold text-gold mb-6 block">
-                Luxuria
+                Knock On Wood
               </Link>
               <p className="text-cream/80 text-lg leading-relaxed mb-6 max-w-md">
                 Creating exceptional interiors that blend luxury with functionality. 
-                Transform your space with our expert design team and experience the 
-                difference of true craftsmanship.
+                Specializing in aluminium work, furniture contracting, and complete interior solutions.
+                Transform your space with our expert team and experience the difference of true craftsmanship.
               </p>
               
               {/* Contact Info */}
@@ -52,7 +52,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-gold" />
-                  <span className="text-cream/80">hello@luxuriainteriors.com</span>
+                  <span className="text-cream/80">addsubedar@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-gold" />
@@ -133,7 +133,7 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-cream/60 text-sm">
-                © {currentYear} Luxuria Interiors. All rights reserved.
+                © {currentYear} Knock On Wood. All rights reserved.
               </p>
               <div className="flex space-x-6 mt-4 md:mt-0">
                 <a href="#" className="text-cream/60 hover:text-gold text-sm transition-colors">

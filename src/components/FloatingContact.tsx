@@ -14,14 +14,23 @@ const FloatingContact = () => {
             <h3 className="font-serif font-bold text-navy mb-3">Get in Touch</h3>
             <div className="space-y-2">
               <a
-                href="tel:+15551234567"
+                href="tel:+919912889119"
                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-secondary transition-colors"
               >
                 <Phone className="h-4 w-4 text-gold" />
                 <span className="text-sm">Call Us</span>
               </a>
               <a
-                href="mailto:hello@luxuriainteriors.com"
+                href="https://wa.me/919912889119"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 p-2 rounded-lg hover:bg-secondary transition-colors"
+              >
+                <MessageCircle className="h-4 w-4 text-green-500" />
+                <span className="text-sm">WhatsApp</span>
+              </a>
+              <a
+                href="mailto:addsubedar@gmail.com"
                 className="flex items-center space-x-3 p-2 rounded-lg hover:bg-secondary transition-colors"
               >
                 <Mail className="h-4 w-4 text-gold" />

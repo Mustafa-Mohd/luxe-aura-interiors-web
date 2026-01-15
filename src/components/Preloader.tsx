@@ -64,16 +64,19 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           ref={logoRef}
           className="w-24 h-24 mx-auto mb-8 bg-gradient-gold rounded-full flex items-center justify-center shadow-gold"
         >
-          <span className="text-navy text-3xl font-serif font-bold">L</span>
+          <span className="text-navy text-3xl font-serif font-bold">K</span>
         </div>
 
         {/* Text */}
         <div ref={textRef} className="mb-12">
           <h1 className="font-serif text-4xl font-bold text-cream mb-2">
-            Luxuria Interiors
+            Knock On Wood
           </h1>
           <p className="text-cream/80 text-lg">
             Crafting Beautiful Spaces
+          </p>
+          <p className="text-cream/60 text-sm mt-2">
+            Founded by Mohammed subedar
           </p>
         </div>
 

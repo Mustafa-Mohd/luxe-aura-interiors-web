@@ -1,9 +1,17 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import galleryImage1 from '@/assets/gallery-1.jpg';
+import galleryImage2 from '@/assets/gallery-2.jpg';
+import galleryImage3 from '@/assets/gallery-3.jpg';
+import galleryImage4 from '@/assets/gallery-4.jpg';
+import galleryImage5 from '@/assets/gallery-5.jpg';
+import galleryImage6 from '@/assets/gallery-6.jpg';
+import galleryImage7 from '@/assets/gallery-7.jpg';
+import galleryImage8 from '@/assets/gallery-8.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,11 +23,13 @@ const GallerySection = () => {
   // Generate more gallery items for demonstration
   const galleryItems = [
     { id: 1, image: galleryImage1, title: "Modern Kitchen", category: "Kitchen" },
-    { id: 2, image: galleryImage1, title: "Luxury Bedroom", category: "Bedroom" },
-    { id: 3, image: galleryImage1, title: "Elegant Living Room", category: "Living Room" },
-    { id: 4, image: galleryImage1, title: "Sophisticated Dining", category: "Dining Room" },
-    { id: 5, image: galleryImage1, title: "Executive Office", category: "Office" },
-    { id: 6, image: galleryImage1, title: "Spa Bathroom", category: "Bathroom" },
+    { id: 2, image: galleryImage2, title: "Luxury Bedroom", category: "Bedroom" },
+    { id: 3, image: galleryImage3, title: "Elegant Living Room", category: "Living Room" },
+    { id: 4, image: galleryImage4, title: "Sophisticated Dining", category: "Dining Room" },
+    { id: 5, image: galleryImage5, title: "Executive Office", category: "Office" },
+    { id: 6, image: galleryImage6, title: "Spa Bathroom", category: "Bathroom" },
+    { id: 7, image: galleryImage7, title: "Contemporary Design", category: "Modern" },
+    { id: 8, image: galleryImage8, title: "Luxury Interiors", category: "Premium" },
   ];
 
   useEffect(() => {
@@ -115,10 +125,12 @@ const GallerySection = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button variant="luxury" size="xl">
-            View Full Gallery
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <Link to="/gallery">
+            <Button variant="luxury" size="xl">
+              View Full Gallery
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

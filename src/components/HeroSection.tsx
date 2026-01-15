@@ -168,7 +168,7 @@ const HeroSection = () => {
             ref={subtitleRef}
             className="text-lg sm:text-xl lg:text-2xl text-cream/90 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
-            Where elegance meets functionality. Creating bespoke interiors that reflect your unique style and elevate your everyday living.
+            Where elegance meets functionality. Specializing in aluminium work, furniture contracting, and complete interior solutions that reflect your unique style and elevate your everyday living.
           </p>
           
           <div ref={buttonRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">

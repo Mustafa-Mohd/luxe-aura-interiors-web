@@ -50,7 +50,7 @@ const HorizontalScrollSection = () => {
   useEffect(() => {
     const container = containerRef.current;
     const scroller = scrollerRef.current;
-    
+
     if (!container || !scroller) return;
 
     const ctx = gsap.context(() => {
@@ -69,34 +69,40 @@ const HorizontalScrollSection = () => {
         }
       );
 
-      // Horizontal scroll animation
-      const scrollWidth = scroller.scrollWidth - scroller.clientWidth;
-      
+      // Calculate the total scroll distance more accurately
+      const cardWidth = window.innerWidth * 0.8 + 48; // 80vw + margin (mx-6 = 3rem = 48px)
+      const totalScrollDistance = (categories.length - 1) * cardWidth;
+
+      // Horizontal scroll animation with improved smoothness
       gsap.to(scroller, {
-        x: -scrollWidth,
+        x: -totalScrollDistance,
         ease: "none",
+        force3D: true,
+        transformOrigin: "center center",
         scrollTrigger: {
           trigger: container,
           start: "top top",
-          end: () => `+=${scrollWidth + window.innerHeight}`,
-          scrub: 1,
+          end: `+=${totalScrollDistance + window.innerHeight * 0.5}`,
+          scrub: 0.8, // Slightly smoother scrub value
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
+          preventOverlaps: true,
         }
       });
 
-      // Individual card animations
+      // Individual card animations with improved timing
       gsap.set(".category-card", { scale: 0.8, opacity: 0.6 });
-      
+
       ScrollTrigger.batch(".category-card", {
         onEnter: (elements) => {
           gsap.to(elements, {
             scale: 1,
             opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "back.out(1.7)",
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out",
             overwrite: true
           });
         },
@@ -104,7 +110,7 @@ const HorizontalScrollSection = () => {
           gsap.to(elements, {
             scale: 0.8,
             opacity: 0.6,
-            duration: 0.3,
+            duration: 0.4,
             stagger: 0.1,
             overwrite: true
           });
@@ -113,9 +119,9 @@ const HorizontalScrollSection = () => {
           gsap.to(elements, {
             scale: 1,
             opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "back.out(1.7)",
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out",
             overwrite: true
           });
         },
@@ -123,7 +129,7 @@ const HorizontalScrollSection = () => {
           gsap.to(elements, {
             scale: 0.8,
             opacity: 0.6,
-            duration: 0.3,
+            duration: 0.4,
             stagger: 0.1,
             overwrite: true
           });
@@ -131,7 +137,17 @@ const HorizontalScrollSection = () => {
       });
     }, container);
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger on window resize for better responsiveness
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -152,15 +168,16 @@ const HorizontalScrollSection = () => {
 
         {/* Horizontal Scroll Container */}
         <div className="flex-1 mt-40">
-          <div 
-            ref={scrollerRef} 
-            className="flex items-center h-full pl-8 pr-8"
-            style={{ width: `${categories.length * 80}vw` }}
+          <div
+            ref={scrollerRef}
+            className="flex items-center h-full pl-8 pr-8 will-change-transform"
+            style={{ width: `calc(${categories.length * 80}vw + ${categories.length * 3}rem)` }}
           >
             {categories.map((category, index) => (
               <div
                 key={category.id}
-                className={`category-card flex-none w-[80vw] md:w-[60vw] lg:w-[40vw] h-[70vh] mx-6 relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br ${category.color} group cursor-pointer`}
+                className={`category-card flex-none w-[80vw] md:w-[60vw] lg:w-[40vw] h-[70vh] mx-6 relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br ${category.color} group cursor-pointer will-change-transform`}
+                style={{ transform: 'translateZ(0)' }}
               >
                 {/* Background Image */}
                 <div className="absolute inset-0">

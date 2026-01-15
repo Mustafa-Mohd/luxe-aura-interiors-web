@@ -14,8 +14,8 @@ const Services = () => {
               Our Services
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive interior design solutions tailored to your unique needs, 
-              from residential spaces to commercial environments.
+              Comprehensive solutions including aluminium work, furniture contracting, and complete interior design 
+              services tailored to your unique needs, from residential spaces to commercial environments.
             </p>
           </div>
         </div>

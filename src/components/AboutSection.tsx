@@ -71,7 +71,7 @@ const AboutSection = () => {
           {/* Content */}
           <div ref={contentRef} className="space-y-6">
             <div className="space-y-4">
-              <h3 className="text-gold font-medium text-lg tracking-wide uppercase">About Luxuria</h3>
+              <h3 className="text-gold font-medium text-lg tracking-wide uppercase">About Knock On Wood</h3>
               <h2 className="font-serif text-3xl lg:text-5xl font-bold text-navy leading-tight">
                 Crafting Spaces That Tell Your Story
               </h2>
@@ -79,14 +79,15 @@ const AboutSection = () => {
             
             <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
               <p>
-                For over a decade, Luxuria Interiors has been at the forefront of luxury interior design, 
-                creating spaces that seamlessly blend sophistication with comfort. Our approach goes beyond 
+                For over a decade, Knock On Wood has been at the forefront of luxury interior design,
+                specializing in aluminium work, furniture contracting, and complete interior solutions.
+                We create spaces that seamlessly blend sophistication with comfort. Our approach goes beyond
                 mere decoration—we craft environments that reflect your personality and enhance your lifestyle.
               </p>
               <p>
                 From intimate residential projects to grand commercial spaces, we bring the same level of 
-                attention to detail and commitment to excellence that has made us the preferred choice 
-                for discerning clients worldwide.
+                attention to detail and commitment to excellence in aluminium fabrication, custom furniture,
+                and interior contracting that has made us the preferred choice for discerning clients worldwide.
               </p>
             </div>
 
@@ -96,7 +97,7 @@ const AboutSection = () => {
                 <div className="text-muted-foreground">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-serif font-bold text-navy mb-2">10+</div>
+                <div className="text-3xl font-serif font-bold text-navy mb-2">27+</div>
                 <div className="text-muted-foreground">Years Experience</div>
               </div>
             </div>

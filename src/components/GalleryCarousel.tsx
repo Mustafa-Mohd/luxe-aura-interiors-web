@@ -1,10 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
-import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Eye, X } from 'lucide-react';
 import gallery1 from '@/assets/gallery-1.jpg';
+import gallery2 from '@/assets/gallery-2.jpg';
+import gallery3 from '@/assets/gallery-3.jpg';
+import gallery4 from '@/assets/gallery-4.jpg';
+import gallery5 from '@/assets/gallery-5.jpg';
+import gallery6 from '@/assets/gallery-6.jpg';
+import gallery7 from '@/assets/gallery-7.jpg';
+import gallery8 from '@/assets/gallery-8.jpg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -22,39 +30,74 @@ const galleryImages = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
+    image: gallery2,
     title: "Elegant Bedroom",
     category: "Bedroom"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800",
+    image: gallery3,
     title: "Designer Kitchen",
     category: "Kitchen"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=800",
+    image: gallery4,
     title: "Luxury Bathroom",
     category: "Bathroom"
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800",
-    title: "Cozy Reading Nook",
-    category: "Living"
+    image: gallery5,
+    title: "Executive Office",
+    category: "Office"
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
-    title: "Minimalist Office",
-    category: "Office"
+    image: gallery6,
+    title: "Contemporary Design",
+    category: "Modern"
+  },
+  {
+    id: 7,
+    image: gallery7,
+    title: "Premium Interiors",
+    category: "Luxury"
+  },
+  {
+    id: 8,
+    image: gallery8,
+    title: "Elegant Spaces",
+    category: "Design"
   }
 ];
 
 const GalleryCarousel = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const openModal = (image, index) => {
+    setSelectedImage(image);
+    setSelectedIndex(index);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  const nextImage = () => {
+    const nextIndex = (selectedIndex + 1) % galleryImages.length;
+    setSelectedImage(galleryImages[nextIndex].image);
+    setSelectedIndex(nextIndex);
+  };
+
+  const prevImage = () => {
+    const prevIndex = selectedIndex === 0 ? galleryImages.length - 1 : selectedIndex - 1;
+    setSelectedImage(galleryImages[prevIndex].image);
+    setSelectedIndex(prevIndex);
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -94,16 +137,38 @@ const GalleryCarousel = () => {
     return () => ctx.revert();
   }, []);
 
+  // Handle keyboard navigation
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const handleKeyPress = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextImage();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevImage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [selectedImage, selectedIndex]);
+
   return (
     <section ref={sectionRef} className="py-20 bg-gradient-to-br from-background to-muted/50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 
-            ref={titleRef}
-            className="font-serif text-4xl lg:text-6xl font-bold text-navy mb-6"
-          >
-            Our Gallery
-          </h2>
+          <Link to="/gallery">
+            <h2
+              ref={titleRef}
+              className="font-serif text-4xl lg:text-6xl font-bold text-navy mb-6 hover:text-gold transition-colors duration-300 cursor-pointer"
+            >
+              Our Gallery
+            </h2>
+          </Link>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Explore our curated collection of stunning interior transformations
           </p>
@@ -145,9 +210,12 @@ const GalleryCarousel = () => {
             }}
             className="gallery-swiper"
           >
-            {galleryImages.map((item) => (
+            {galleryImages.map((item, index) => (
               <SwiperSlide key={item.id}>
-                <div className="group relative overflow-hidden rounded-2xl shadow-elegant hover:shadow-gold transition-all duration-500">
+                <div 
+                  className="group relative overflow-hidden rounded-2xl shadow-elegant hover:shadow-gold transition-all duration-500 cursor-pointer"
+                  onClick={() => openModal(item.image, index)}
+                >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={item.image}
@@ -168,7 +236,13 @@ const GalleryCarousel = () => {
                     </div>
                     
                     <div className="absolute top-6 right-6">
-                      <button className="w-12 h-12 bg-cream/20 backdrop-blur-sm rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy transition-all duration-300 magnetic-button">
+                      <button 
+                        className="w-12 h-12 bg-cream/20 backdrop-blur-sm rounded-full flex items-center justify-center text-cream hover:bg-gold hover:text-navy transition-all duration-300 magnetic-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openModal(item.image, index);
+                        }}
+                      >
                         <Eye className="w-5 h-5" />
                       </button>
                     </div>
@@ -187,6 +261,67 @@ const GalleryCarousel = () => {
           </button>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm animate-in fade-in-0 duration-300"
+          onClick={closeModal}
+        >
+          <div 
+            className="relative max-w-5xl max-h-[90vh] w-full mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors z-10"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors z-10"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Image */}
+            <img
+              src={selectedImage}
+              alt={galleryImages[selectedIndex].title}
+              className="w-full h-full object-contain rounded-lg"
+            />
+
+            {/* Image Info */}
+            <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-4 text-white">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-serif text-xl font-bold mb-1">
+                    {galleryImages[selectedIndex].title}
+                  </h3>
+                  <p className="text-gold font-medium text-sm uppercase tracking-wide">
+                    {galleryImages[selectedIndex].category}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-white/60 text-sm">
+                    {selectedIndex + 1} of {galleryImages.length}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

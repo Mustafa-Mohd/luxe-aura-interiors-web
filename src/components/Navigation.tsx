@@ -26,16 +26,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-lg shadow-card' : 'bg-transparent'
-    }`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg shadow-lg transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className={`font-serif text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
-            isScrolled ? 'text-navy' : 'text-white'
-          }`}>
-            Luxuria
+          <Link to="/" className="font-serif text-2xl lg:text-3xl font-bold text-white transition-colors duration-300 hover:text-gold">
+            Knock On Wood
           </Link>
 
           {/* Desktop Navigation */}
@@ -45,7 +41,7 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 className={`font-medium transition-all duration-300 hover:text-gold relative ${
-                  location.pathname === item.path ? 'text-gold' : isScrolled ? 'text-navy' : 'text-white'
+                  location.pathname === item.path ? 'text-gold' : 'text-white'
                 }`}
               >
                 {item.name}
@@ -66,9 +62,7 @@ const Navigation = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 transition-colors hover:text-gold ${
-                isScrolled ? 'text-navy' : 'text-white'
-              }`}
+              className="lg:hidden p-2 text-white transition-colors hover:text-gold"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -77,14 +71,14 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-t border-border">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-lg border-t border-gray-800">
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   className={`block py-2 font-medium transition-colors ${
-                    location.pathname === item.path ? 'text-gold' : 'text-navy hover:text-gold'
+                    location.pathname === item.path ? 'text-gold' : 'text-white hover:text-gold'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
